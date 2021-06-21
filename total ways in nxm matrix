@@ -1,0 +1,22 @@
+//  Question:-   Find the number of ways in NxM matrix ?
+
+package com.company;
+
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int N=sc.nextInt();
+        int M=sc.nextInt();
+       int c= count(N,M);
+       System.out.println(c);
+    }
+    public static int count(int n, int m){
+        if(n==1 || m==1)
+            return 1;
+        else
+            return (count(n-1,m)+count(n,m-1));
+    }
+}

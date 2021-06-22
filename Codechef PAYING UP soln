@@ -1,0 +1,56 @@
+  Question:-
+  
+  In the mysterious country of Byteland, everything is quite different from what you'd normally expect.
+   In most places, if you were approached by two mobsters in a dark alley, they would probably tell you to give them all the money that you have.
+   If you refused, or didn't have any - they might even beat you up.
+
+In Byteland the government decided that even the slightest chance of someone getting injured has to be ruled out.
+So, they introduced a strict policy. When a mobster approaches you in a dark alley, he asks you for a specific amount of money. 
+You are obliged to show him all the money that you have, but you only need to pay up if he can find a subset of your banknotes whose total value matches his demand. 
+Since banknotes in Byteland can have any positive integer value smaller than one thousand you are quite likely to get off without paying.
+
+Both the citizens and the gangsters of Byteland have very positive feelings about the system.
+No one ever gets hurt, the gangsters don't lose their jobs, and there are quite a few rules that minimize that probability of getting
+mugged (the first one is: don't go into dark alleys - and this one is said to work in other places also).
+   
+   
+   
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int n=sc.nextInt();
+		    int m=sc.nextInt();
+		    int a[]=new int[n];
+		    for(int i=0;i<n;i++){
+		        a[i]=sc.nextInt();
+		    }
+		    solve(a,n,m);
+		}
+	}
+	static void solve(int arr[],int n,int m)
+{
+    if(notes(arr,n,m))
+    System.out.println("Yes");
+    else
+    System.out.println("No");
+}
+static boolean notes(int arr[],int n,int m)
+{
+if(m==0)return true;
+if(m<0)return false;
+if(n==0)return false;
+if(notes(arr,n-1,m-arr[n-1])==false)
+return notes(arr,n-1,m);
+else
+return true;
+    }
+}

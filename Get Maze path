@@ -1,0 +1,45 @@
+package com.company;
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int n=sc.nextInt();
+     int m=sc.nextInt();
+	ArrayList<String> paths=getkpc(1,1,n,m);
+	System.out.println(paths);
+
+   }
+   public static ArrayList<String>getkpc(int sr,int sc,int dr,int dc) {
+       if (sr==dr && sc==dc) {
+           ArrayList<String> bres = new ArrayList<>();
+           bres.add("");
+           return bres;
+       }
+      ArrayList<String>hpath=new ArrayList<>();
+       ArrayList<String>vpath=new ArrayList<>();
+       ArrayList<String>paths=new ArrayList<>();
+
+       if(sc<dc){
+           hpath=getkpc(sr,sc+1,dr,dc);
+       }
+       if(sr<dr){
+           vpath=getkpc(sr+1,sc,dr,dc);
+       }
+       for(String path:hpath){
+           paths.add("h"+path);
+       }
+       for(String path:vpath){
+           paths.add("v"+path);
+       }
+
+         return paths;
+   }
+}
+
+
+input:=>
+n=3,m=3;
+
+output:=>
+[hhvv, hvhv, hvvh, vhhv, vhvh, vvhh]

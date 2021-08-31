@@ -1,0 +1,44 @@
+package com.company;
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int n=sc.nextInt();
+     int r=sc.nextInt();
+    int c=sc.nextInt();
+    int a[][]=new int[n][n];
+        knightTour(a,r,c,1);
+
+
+   }
+   public static void knightTour(int[][] ch,int r,int c,int move) {
+      if(r<0 ||c<0||r>=ch.length ||c>=ch.length||ch[r][c]>0){
+          return;
+      }else if(move==ch.length*ch.length){
+          ch[r][c]=move;
+          display(ch);
+          ch[r][c]=0;
+          return;
+      }
+      ch[r][c]=move;
+      knightTour(ch,r-2,c+1,move+1);
+       knightTour(ch,r-1,c+2,move+1);
+       knightTour(ch,r+1,c+2,move+1);
+       knightTour(ch,r+2,c+1,move+1);
+       knightTour(ch,r+2,c-1,move+1);
+       knightTour(ch,r+1,c-2,move+1);
+       knightTour(ch,r-1,c-2,move+1);
+       knightTour(ch,r-2,c-1,move+1);
+       ch[r][c]=0;
+   }
+   public static void display(int [][] chess){
+        for(int i=0;i<chess.length;i++){
+            for(int j=0;j<chess[0].length;j++){
+                System.out.println(chess[i][j]);
+            }
+            System.out.println();
+        }
+       System.out.println();
+   }
+}

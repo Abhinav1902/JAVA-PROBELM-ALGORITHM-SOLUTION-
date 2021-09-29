@@ -1,0 +1,27 @@
+package com.company;
+
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int a[]=new int[n];
+        for(int i=0;i<n;i++){
+            a[i]=sc.nextInt();
+       }
+        Stack<Integer>st=new Stack<>();
+        for(int i=0;i<n;i++){
+            while(!st.isEmpty()&& st.peek()>=a[i]){
+                st.pop();
+            }
+            if(st.isEmpty()){
+                System.out.println(-1);
+            }
+            else{
+                System.out.println(st.peek());
+            }
+            st.push(a[i]);
+        }
+   }
+}
